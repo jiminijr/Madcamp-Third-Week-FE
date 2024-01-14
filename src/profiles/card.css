@@ -1,0 +1,35 @@
+.card {
+  border: 5px solid #ddd;
+  overflow: hidden;
+  margin: 10px;
+  width: 200px;
+  height: 350px;
+  color: #000; /* 어두운 색상 */
+  background-color: #fff; /* 밝은 배경색 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+
+}
+
+.card-body {
+  padding: 15px;
+  text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.card-body h3 {
+  margin: 10px 0; /* h3 요소의 마진 조정 */
+}
+
+.card-body p {
+  margin: 0;
+}
+
+[data-theme="dark"] .card {
+  color: #fff; /* 밝은 색상으로 변경 */
+  background-color: #333; /* 어두운 배경색 */
+}

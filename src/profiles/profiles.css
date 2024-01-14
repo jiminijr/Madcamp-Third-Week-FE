@@ -1,0 +1,45 @@
+/* Profiles 컨테이너 스타일 */
+.profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-basis: 30%;
+    gap: 100px; /* 카드 간격 */
+  }
+  
+  .title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  /* 타이틀 이미지 스타일 */
+  .title-image {
+    width: 10%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px; /* 타이틀 아래 간격 */
+  }
+  
+  /* 우측 상단 버튼 스타일 */
+  .top-right-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  /* 플로팅 버튼 스타일 */
+  .floating-button {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    background-color: hsl(0, 0%, 100%);
+    color: rgb(0, 0, 0);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  

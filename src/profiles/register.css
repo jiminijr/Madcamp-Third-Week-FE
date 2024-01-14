@@ -1,0 +1,88 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-inner {
+    position: relative;
+    padding: 20px;
+    width: 500px;
+    background-color: white;
+    color:#616467;
+    border-radius: 10px;
+    display: flex; /* Flex 컨테이너 설정 */
+    flex-direction: column; /* 요소들을 세로로 정렬 */
+    align-items: center; /* 수직 방향 중앙 정렬 */
+    justify-content: center; /* 수평 방향 중앙 정렬 */
+  }
+  
+  .title-image1 {
+    width: 60px; /* 또는 적절한 크기로 조정 */
+    height: auto; /* 이미지 비율 유지 */
+    margin-bottom: 20px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px; /* 버튼을 상단에서 10px 떨어진 위치에 배치 */
+    left: 90%; /* 버튼을 우측에서 10px 떨어진 위치에 배치 */
+    border: none;
+    background: none;
+    background-color: white;
+    font-size: 1em; /* 폰트 크기 줄임 */
+    cursor: pointer;
+  }
+  
+  .register-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #616467;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .register-btn:hover {
+    background-color: #cccdcd;
+  }
+
+  
+  
+  .popup-inner input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .popup-inner button {
+
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .popup-inner button:hover {
+    background-color: #cccdcd;
+  }
+  
+  .file-upload-container{
+    text-align: center;
+    color: #757575;
+    width: 100%;
+    align-items: center;
+    
+  }
