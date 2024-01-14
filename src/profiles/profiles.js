@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from './card';
 import Register from './register'; 
 import './profiles.css'; // 스타일시트 임포트
 import logoPath from '../../src/assets/images/gookhwa.png'
+import poong from '../../src/assets/images/poong1.png'
 
 function Profiles() {
     const [cards, setCards] = useState([
@@ -24,6 +25,31 @@ function Profiles() {
         
   ]);
   
+
+  const [lanterns, setLanterns] = useState([]);
+
+  useEffect(() => {
+      setLanterns(generateLanterns());
+  }, []);
+
+  function generateLanterns() {
+    const newLanterns = [];
+    for (let i = 0; i < 400; i++) {
+      const size = Math.random() * 50 + 50; // 50px에서 150px 사이의 크기
+      newLanterns.push({
+        id: i,
+        style: {
+          width: `${size}px`,
+          height: `${size}px`,
+          animationDuration: `${Math.random() * 5 + 20}s`,
+          animationDelay: `${Math.random() * 5 + 3}s`,
+          left: `${Math.random() * 100}%`,
+        }
+      });
+    }
+      console.log(newLanterns)
+      return newLanterns;
+  }
  const [showPopup, setShowPopup] = useState(false);
 
   const handleAddCard = (newCardData) => {
@@ -35,7 +61,17 @@ function Profiles() {
       <div className="title-container">
         <img src={logoPath} className="title-image" />
       </div>
-
+      <div className="lantern-container">
+                {lanterns.map(lantern => (
+                    <img 
+                        key={lantern.id} 
+                        src={poong} 
+                        style={lantern.style} 
+                        className={`lantern lantern-${lantern.id % 2 === 0 ? 'up': 'down'}` } 
+                      
+                    />
+                ))}
+            </div>
       <div className="top-right-buttons"></div>
 
       <div className="profiles">

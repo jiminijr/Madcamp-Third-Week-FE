@@ -12,7 +12,30 @@ function Register({ show, onClose, onRegister }) {
     image: ""
   });
 
+  const [lanterns, setLanterns] = useState([]);
 
+  const generateLanterns = () => {
+    const newLanterns = [];
+    for (let i = 0; i < 100; i++) {
+      const size = Math.random() * 50 + 50; // 50px에서 150px 사이의 크기
+      newLanterns.push({
+        id: i,
+        style: {
+          width: `${size}px`,
+          height: `${size}px`,
+          animationDuration: `${Math.random() * 5 + 60}s`,
+          animationDelay: `${Math.random() * 5 + 3}s`,
+          left: `${Math.random() * 100}%`,
+        }
+      });
+    }
+    setLanterns(newLanterns);
+  };
+
+  const handleButtonClick = () => {
+    handleSubmit();      // 폼 제출 처리
+    generateLanterns();  // 랜턴 생성
+  };
 
   const handleSubmit = () => {
     onRegister(newCard);
@@ -63,7 +86,7 @@ function Register({ show, onClose, onRegister }) {
         <input type="file" name="image" onChange={handleInputChange} />
       </div>
         {newCard.image && <img src={newCard.image} alt="Preview" style={{ width: '100px', height: '100px' , marginBottom: '20px'}} />}
-        <button className="register-btn" onClick={handleSubmit}>등록하기</button>
+        <button className="register-btn" onClick={handleButtonClick}>등록하기</button>
       </div>
     </div>
   );
