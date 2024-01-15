@@ -61,7 +61,7 @@ function Profiles() {
       <div className="title-container">
         <img src={logoPath} className="title-image" />
       </div>
-      <div className="lantern-container">
+      {/* <div className="lantern-container">
                 {lanterns.map(lantern => (
                     <img 
                         key={lantern.id} 
@@ -71,7 +71,7 @@ function Profiles() {
                       
                     />
                 ))}
-            </div>
+            </div> */}
       <div className="top-right-buttons"></div>
 
       <div className="profiles">

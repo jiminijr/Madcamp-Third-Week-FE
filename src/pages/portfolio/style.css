@@ -78,3 +78,36 @@
 .po_item .content a:hover {
     text-decoration: none;
 }
+
+/* 모달 창 스타일 */
+.modal {
+    background: white; /* 배경색 */
+    padding: 20px; /* 내부 여백 */
+    border-radius: 8px; /* 테두리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    max-width: 500px; /* 최대 너비 */
+    margin: 40px auto; /* 상하 여백과 자동 가로 정렬 */
+}
+
+.modal input[type="text"], 
+.modal input[type="file"] {
+    width: 100%; /* 너비 100% */
+    padding: 8px; /* 내부 여백 */
+    margin-bottom: 10px; /* 아래쪽 여백 */
+    border: 1px solid #ccc; /* 테두리 색상 */
+    border-radius: 4px; /* 테두리 둥글게 */
+}
+
+.modal button {
+    background-color: var(--button-color); /* 버튼 배경색 */
+    color: white; /* 텍스트 색상 */
+    padding: 10px 15px; /* 내부 여백 */
+    border: none; /* 테두리 없앰 */
+    border-radius: 4px; /* 테두리 둥글게 */
+    cursor: pointer; /* 커서 포인터 */
+    margin-right: 10px; /* 오른쪽 여백 */
+}
+
+.modal button:hover {
+    opacity: 0.9; /* 호버 시 투명도 변경 */
+}
