@@ -34,17 +34,17 @@ function Register({ show, onClose, onRegister }) {
   };
 
   const handleButtonClick = () => {
-    handleSubmit(); // 폼 제출 처리
     generateLanterns(); // 랜턴 생성
+    handleSubmit(); // 폼 제출 처리
   };
-
+  
   const handleSubmit = async () => {
     try {
       console.log('Submitting form:', newCard);
   
       const formData = new FormData();
       formData.append('name', newCard.name);
-      formData.append('date', newCard.separationDate);
+      formData.append('date', newCard.separationDate); // 백엔드에서 요구하는 필드명으로 수정
       formData.append('exis', newCard.role);
       formData.append('motto', newCard.motto);
       formData.append('introduction', newCard.introduction);
@@ -52,9 +52,9 @@ function Register({ show, onClose, onRegister }) {
   
       console.log('Form data:', formData);
       for (var pair of formData.entries()) {
-        console.log(pair[0]+ ', ' + pair[1]); 
-    }
-    
+        console.log(pair[0] + ', ' + pair[1]);
+      }
+  
       const accessToken = localStorage.getItem('accessToken');
       const response = await fetch('http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/peoples/people/', {
         method: 'POST',

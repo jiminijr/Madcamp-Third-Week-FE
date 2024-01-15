@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import Card from './card';
-import Register from './register'; 
+import Register from './register';
 import './profiles.css'; // 스타일시트 임포트
 import logoPath from '../../src/assets/images/gookhwa.png';
 import poong from '../../src/assets/images/poong1.png';
@@ -12,8 +11,33 @@ function Profiles() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
+    // 백엔드에서 프로필 정보를 가져오는 API 호출
+    const fetchData = async () => {
+      try {
+        const accessToken = localStorage.getItem('accessToken');
+        const response = await fetch('http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/peoples/people/', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (response.ok) {
+          const responseData = await response.json();
+          setCards(responseData.map(item => ({ id: item.id, image: item.picture_url })));
+        } else {
+          console.error('Failed to fetch profiles:', response.status);
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching profiles:', error);
+      }
+    };
+
+    fetchData();
+    
+    // 랜턴 생성
     setLanterns(generateLanterns());
-  }, []);
+  }, []); // 빈 배열을 전달하여 한 번만 실행되도록 설정
 
   function generateLanterns() {
     const newLanterns = [];
@@ -59,8 +83,9 @@ function Profiles() {
       <div className="top-right-buttons"></div>
 
       <div className="profiles">
+        
         {cards.map((card) => (
-          <Card key={card.id} image={card.image} />
+          <Card key={card.id} image={`http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/${card.picture_url}`} />
         ))}
       </div>
 
@@ -76,3 +101,5 @@ function Profiles() {
 }
 
 export default Profiles;
+
+
