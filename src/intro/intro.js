@@ -96,6 +96,48 @@ function Intro() {
         console.error('An error occurred while processing signup:', error);
       }
     };
+
+    const handleLoginSubmit = async () => {
+      console.log('Submitting login form...', { email: userData.email, password: userData.password }); // 요청 데이터 확인
+      try {
+        const response = await fetch('http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/accounts/login/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: userData.email,
+            password: userData.password,
+          }),
+        });
+    
+        if (response.status === 200) {
+          const responseData = await response.json();
+          const accessToken = responseData.access_token;
+    
+          localStorage.setItem('accessToken', accessToken);
+    
+          // Handle success
+          console.log('Login success:', responseData); // 성공 시 로그
+          // 이후의 작업 처리
+        
+            navigate('/profiles');
+         
+          
+        } else if (response.status === 401) {
+          // Handle unauthorized (Invalid credentials) errors
+          const errorText = await response.text();
+          console.log('Login failed:', errorText); // 문자열 형태의 에러 메시지 출력
+        } else {
+          // Handle other errors
+          console.error('Login failed with status:', response.status);
+        }
+      } catch (error) {
+        console.error('An error occurred while processing login:', error);
+      }
+    };
+    
+    
   
   return (
     <div className="intro-container">
@@ -127,11 +169,22 @@ function Intro() {
           <div className="login-content">
             <h2>Login</h2>
             <button onClick={closeLoginPopup} className="close-popup">X</button>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button className="login-btn" onClick={handleLoginClick}>Login</button>
+            <input
+              type="text"
+              placeholder="Email"
+              value={userData.email}
+              onChange={handleInputChange}
+              name="email"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={userData.password}
+              onChange={handleInputChange}
+              name="password"
+            />
+            <button className="login-btn" onClick={handleLoginSubmit}>Login</button>
             <button className="signup-btn" onClick={openSignupPopup}>Sign Up</button>
-
           </div>
         </div>
       )}
