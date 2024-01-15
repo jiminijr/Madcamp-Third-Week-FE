@@ -98,7 +98,7 @@ function Intro() {
     };
 
     const handleLoginSubmit = async () => {
-      console.log('Submitting login form...', { email: userData.email, password: userData.password }); // 요청 데이터 확인
+      console.log('Submitting login form...', { email: userData.email, password: userData.password });
       try {
         const response = await fetch('http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/accounts/login/', {
           method: 'POST',
@@ -115,27 +115,21 @@ function Intro() {
           const responseData = await response.json();
           const accessToken = responseData.access_token;
     
-          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('accessToken', accessToken); // 로컬 스토리지에 저장
     
-          // Handle success
-          console.log('Login success:', responseData); // 성공 시 로그
-          // 이후의 작업 처리
-        
-            navigate('/profiles');
-         
-          
+          console.log('Login success:', responseData);
+          navigate('/profiles');
         } else if (response.status === 401) {
-          // Handle unauthorized (Invalid credentials) errors
           const errorText = await response.text();
-          console.log('Login failed:', errorText); // 문자열 형태의 에러 메시지 출력
+          console.log('Login failed:', errorText);
         } else {
-          // Handle other errors
           console.error('Login failed with status:', response.status);
         }
       } catch (error) {
         console.error('An error occurred while processing login:', error);
       }
     };
+    
     
     
   
