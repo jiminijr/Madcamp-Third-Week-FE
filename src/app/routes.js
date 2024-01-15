@@ -23,11 +23,12 @@ const AnimatedRoutes = withRouter(({ location }) => (
       unmountOnExit
     >
       <Routes location={location}>
-      <Route path="/profiles" element={<Profiles/>} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/profiles" element={<Profiles />} />
+        <Route path="/home/:userId" element={<Home />} />
+        <Route path="/about/:userId" element={<About />} />
+        <Route path="/portfolio/:userId" element={<Portfolio />} />
+        <Route path="/contact/:userId" element={<ContactUs />} />
+        {/* Add more dynamic routes as needed */}
         <Route path="*" element={<Intro />} />
       </Routes>
     </CSSTransition>

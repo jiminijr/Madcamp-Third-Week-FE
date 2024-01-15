@@ -92,9 +92,6 @@ const socialprofils = {
 };
 export {
     meta,
-    dataabout,
-    dataportfolio,
-    worktimeline,
     skills,
     services,
     introdata,

@@ -9,13 +9,17 @@ import Themetoggle from "../components/themetoggle";
 
 const Headermain = () => {
   const location = useLocation();
-  const [isActive, setActive] = useState("false");
+  const [isActive, setActive] = useState(false);
 
-  const pathsToShowHeader = ["/home", "/portfolio", "/about", "/contact"];
+  const pathMatchRegex = /^\/(home|portfolio|about|contact)\/\d+$/;
 
-  if (!pathsToShowHeader.includes(location.pathname)) {
-  return null;
-}
+  const shouldShowHeader = ["/portfolio", "/about", "/contact", "/home"].some(path => 
+    location.pathname === path || pathMatchRegex.test(location.pathname)
+  );
+
+  if (!shouldShowHeader) {
+    return null;
+  }
 
   const handleToggle = () => {
     setActive(!isActive);

@@ -7,7 +7,16 @@ import backgroundMusic from '../../src/assets/audio/bgm.mp3'; // 배경 음악 �
 function Intro() {
   const [showLoginPopup, setShowLoginPopup] = useState(false);
   const [showSignupPopup, setShowSignupPopup] = useState(false);
+  const [userData, setUserData] = useState({
+    email: '',
+    username: '',
+    password: '',
+    phone_number: '',
+    nickname: '',
+  });
+  const [errorMessages, setErrorMessages] = useState({});
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  
   
   const navigate = useNavigate();
 
@@ -40,7 +49,7 @@ function Intro() {
     openLoginPopup();
   };
   
-    const toggleAudio = () => {
+  const toggleAudio = () => {
     const audioEl = document.getElementsByClassName("background-audio")[0];
     if (isAudioPlaying) {
         audioEl.pause();
@@ -49,6 +58,80 @@ function Intro() {
     }
     setIsAudioPlaying(!isAudioPlaying);
     };
+
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setUserData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    };
+
+    const handleSignupSubmit = async () => {
+      console.log('Submitting signup form...', userData); // 요청 데이터 확인
+      try {
+        const response = await fetch('http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/accounts/register/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(userData),
+        });
+    
+        if (response.status === 201) {
+          // Handle success
+          console.log('Signup success:', response); // 성공 시 로그
+          setShowSignupPopup(false);
+          openLoginPopup(); // Or any other success logic
+        } else if (response.status === 400) {
+          // Handle validation errors
+          const errorData = await response.json();
+          setErrorMessages(errorData);
+          console.log('Signup validation errors:', errorData); // 에러 시 로그
+        } else {
+          // Handle other errors
+          console.error('Signup failed with status:', response.status);
+        }
+      } catch (error) {
+        console.error('An error occurred while processing signup:', error);
+      }
+    };
+
+    const handleLoginSubmit = async () => {
+      console.log('Submitting login form...', { email: userData.email, password: userData.password });
+      try {
+        const response = await fetch('http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com/accounts/login/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: userData.email,
+            password: userData.password,
+          }),
+        });
+    
+        if (response.status === 200) {
+          const responseData = await response.json();
+          const accessToken = responseData.access_token;
+    
+          localStorage.setItem('accessToken', accessToken); // 로컬 스토리지에 저장
+    
+          console.log('Login success:', responseData);
+          navigate('/profiles');
+        } else if (response.status === 401) {
+          const errorText = await response.text();
+          console.log('Login failed:', errorText);
+        } else {
+          console.error('Login failed with status:', response.status);
+        }
+      } catch (error) {
+        console.error('An error occurred while processing login:', error);
+      }
+    };
+    
+    
+    
   
   return (
     <div className="intro-container">
@@ -80,28 +163,39 @@ function Intro() {
           <div className="login-content">
             <h2>Login</h2>
             <button onClick={closeLoginPopup} className="close-popup">X</button>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button className="login-btn" onClick={handleLoginClick}>Login</button>
+            <input
+              type="text"
+              placeholder="Email"
+              value={userData.email}
+              onChange={handleInputChange}
+              name="email"
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={userData.password}
+              onChange={handleInputChange}
+              name="password"
+            />
+            <button className="login-btn" onClick={handleLoginSubmit}>Login</button>
             <button className="signup-btn" onClick={openSignupPopup}>Sign Up</button>
-
           </div>
         </div>
       )}
        {showSignupPopup && (
-    <div className="signup-popup">
-      <div className="signup-content">
-        <h2>Sign Up</h2>
-        <button onClick={closeSignupPopup} className="close-popup">X</button>
-        <input type="email" placeholder="Email" />
-        <input type="username" placeholder="Username" />
-        <input type="password" placeholder="Password" />
-        <input type="phone_number" placeholder="Phone Number" />
-        <input type="nickname" placeholder="Nickname" />
-        <button className="signup-submit-btn">Create Account</button>
-      </div>
+  <div className="signup-popup">
+    <div className="signup-content">
+      <h2>Sign Up</h2>
+      <button onClick={closeSignupPopup} className="close-popup">X</button>
+      <input type="email" placeholder="Email" name="email" onChange={handleInputChange} />
+      <input type="text" placeholder="Username" name="username" onChange={handleInputChange} />
+      <input type="password" placeholder="Password" name="password" onChange={handleInputChange} />
+      <input type="text" placeholder="Phone Number" name="phone_number" onChange={handleInputChange} />
+      <input type="text" placeholder="Nickname" name="nickname" onChange={handleInputChange} />
+      <button className="signup-submit-btn" onClick={handleSignupSubmit}>Create Account</button>
     </div>
-  )}
+  </div>
+)}
 </div>
   );
 }
