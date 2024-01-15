@@ -16,7 +16,7 @@ function Register({ show, onClose, onRegister }) {
 
   const generateLanterns = () => {
     const newLanterns = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 20; i++) {
       const size = Math.random() * 50 + 50; // 50px에서 150px 사이의 크기
       newLanterns.push({
         id: i,

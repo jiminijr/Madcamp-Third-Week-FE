@@ -9,17 +9,17 @@ function Profiles() {
     const [cards, setCards] = useState([
     {
       id: 1,
-      image: 'https://img.freepik.com/free-photo/portrait-of-cheerful-caucasian-man_53876-13440.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1705017600&semt=ais',
+      image: 'https://img.sbs.co.kr/newsnet/etv/upload/2021/05/30/30000692162_700.jpg',
 
     },
     {
         id: 2,
-        image: 'https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1704672000&semt=ais',
+        image: 'https://news.kbs.co.kr/data/layer/602/2017/10/ZW2Yujc29jgjF.jpg',
   
       },
       {
         id: 3,
-        image: 'https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/32E9/image/BA2Qyx3O2oTyEOsXe2ZtE8cRqGk.JPG',
+        image: 'https://mblogthumb-phinf.pstatic.net/MjAxODA3MDJfMjQ2/MDAxNTMwNTAzNjA3MDUy.4DizrvCULdsVpLqCFLZFEnenUZ_ydpJLzYGe7joe0lAg.v2iT4kRbUoozB7djA7VoszrNNET2GhLTz6-AS9ghDz0g.JPEG.luckystar_78/%EB%B0%95%EC%A4%80%EC%84%9C%EB%8B%982.jpg?type=w420',
   
       }
         
@@ -61,7 +61,7 @@ function Profiles() {
       <div className="title-container">
         <img src={logoPath} className="title-image" />
       </div>
-      {/* <div className="lantern-container">
+      <div className="lantern-container">
                 {lanterns.map(lantern => (
                     <img 
                         key={lantern.id} 
@@ -71,7 +71,7 @@ function Profiles() {
                       
                     />
                 ))}
-            </div> */}
+            </div>
       <div className="top-right-buttons"></div>
 
       <div className="profiles">

@@ -44,13 +44,13 @@ const Headermain = () => {
               <div className="menu__container p-3">
                 <ul className="the_menu">
                   <li className="menu_item ">
-                  <Link  onClick={handleToggle} to="/" className="my-3">Home</Link>
+                  <Link  onClick={handleToggle} to="/home" className="my-3">Home</Link>
                   </li>
                   <li className="menu_item">
-                    <Link  onClick={handleToggle} to="/portfolio" className="my-3"> Portfolio</Link>
+                    <Link  onClick={handleToggle} to="/portfolio" className="my-3"> Gallery</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/about" className="my-3">About</Link>
+                  <Link onClick={handleToggle} to="/about" className="my-3">Letters</Link>
                   </li>
                   <li className="menu_item">
                   <Link onClick={handleToggle} to="/contact" className="my-3"> Contact</Link>

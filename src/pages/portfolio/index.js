@@ -10,7 +10,7 @@ export const Portfolio = () => {
 ];
 
 
-  const [portfolioData, setPortfolioData] = useState("");
+  const [portfolioData, setPortfolioData] = useState(dataportfolio);
   const [showPopup, setShowPopup] = useState(false); // 팝업 표시 상태
   const [newImage, setNewImage] = useState(null);
   const [newDescription, setNewDescription] = useState("");
@@ -43,16 +43,18 @@ export const Portfolio = () => {
       <Container className="About-header">
         <Helmet>
           <meta charSet="utf-8" />
-          <title> Portfolio | {meta.title} </title>{" "}
+          <title> Gallery | {meta.title} </title>{" "}
           <meta name="description" content={meta.description} />
         </Helmet>
-        <Row className="mb-5 mt-3 pt-md-3">
-          <Col lg="8">
-            <h1 className="display-4 mb-4"> Portfolio </h1>{" "}
-            <hr className="t_border my-4 ml-0 text-left" />
-          </Col>
-        </Row>
-        <button onClick={openPopup}>이미지 추가</button>
+        <Row className="mb-5 mt-3 pt-md-3 align-items-center">
+  <Col lg="8">
+    <h1 className="display-4 mb-4">Gallery</h1>
+    <hr className="t_border my-4 ml-0 text-left" />
+  </Col>
+  <Col lg="4" className="text-lg-right">
+    <button onClick={openPopup} className="add-image-button">이미지 추가</button>
+  </Col>
+</Row>
         {showPopup && (
         <div className="popup">
           <div className="popup-content">
@@ -67,13 +69,12 @@ export const Portfolio = () => {
       )}
   
         <div className="mb-5 po_items_ho">
-          {dataportfolio.map((data, i) => {
+          {portfolioData.map((data, i) => {
             return (
               <div key={i} className="po_item">
                 <img src={data.img} alt="" />
                 <div className="content">
                   <p>{data.description}</p>
-                  <a href={data.link}>view project</a>
                 </div>
               </div>
             );
