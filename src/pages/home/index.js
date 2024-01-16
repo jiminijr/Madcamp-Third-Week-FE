@@ -1,6 +1,8 @@
 
-import React from "react";
-import { useLocation } from 'react-router-dom'; 
+import React, { useState, useEffect } from "react";
+import { useLocation, useParams, useNavigate } from 'react-router-dom'; 
+import Headermain from '../../header';
+import Profiles from "../../profiles/profiles";
 import "./style.css";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Typewriter from "typewriter-effect";
@@ -11,10 +13,27 @@ const accessToken = localStorage.getItem('accessToken');
 
 export const Home = () => {
   const location = useLocation();
-  const userData = location.state.responseData; 
+  const navigate = useNavigate();
+  const { userId } = useParams();
+  console.log( userId , 'home userID')
 
+  const userData = location.state?.responseData;
+
+  useEffect(() => {
+    if (userData === undefined) {
+      // userData가 없는 경우 Profiles 페이지로 리디렉션
+      navigate('/profiles');
+    }
+  }, [userData, navigate]);
+
+    // userData가 없는 경우 렌더링을 방지하거나, 대체 UI를 표시
+    if (userData === undefined) {
+      return null; // 또는 대체 컴포넌트 렌더링
+    }
+    
   return (
     <HelmetProvider>
+      <Headermain userId={userId} />
       <section id="home" className="home">
         <Helmet>
           <meta charSet="utf-8" />
@@ -71,3 +90,5 @@ export const Home = () => {
     </HelmetProvider>
   );
 };
+
+export default Home;

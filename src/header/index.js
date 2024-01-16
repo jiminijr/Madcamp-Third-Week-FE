@@ -1,19 +1,23 @@
+
+
 import React, { useState } from "react";
 import "./style.css";
 import { VscGrabber, VscClose } from "react-icons/vsc";
-import { useLocation } from 'react-router-dom';
-
+import Home from "../pages/home";
 import { Link } from "react-router-dom";
 import { logotext ,socialprofils } from "../content_option";
 import Themetoggle from "../components/themetoggle";
+import { useParams, useLocation } from 'react-router-dom';
 
-const Headermain = () => {
-  const location = useLocation();
-  const [isActive, setActive] = useState(false);
 
-  const pathMatchRegex = /^\/(home|portfolio|about|contact)\/\d+$/;
+const Headermain = ({ userId }) => {
+  console.log(userId); 
+  const [isActive, setActive] = useState(true);
 
-  const shouldShowHeader = ["/portfolio", "/about", "/contact", "/home"].some(path => 
+
+  const pathMatchRegex = /^\/home\/\d+(\/(gallery|letters|contact))?$/;
+
+  const shouldShowHeader = ["/gallery", "/letters", "/contact", "/home"].some(path => 
     location.pathname === path || pathMatchRegex.test(location.pathname)
   );
 
@@ -47,17 +51,17 @@ const Headermain = () => {
             <div className="menu__wrapper">
               <div className="menu__container p-3">
                 <ul className="the_menu">
-                  <li className="menu_item ">
-                  <Link  onClick={handleToggle} to="/home" className="my-3">Home</Link>
+                <li className="menu_item">
+                <Link to={`/home/${userId}`} className="my-3">Home</Link>
                   </li>
                   <li className="menu_item">
-                    <Link  onClick={handleToggle} to="/portfolio" className="my-3"> Gallery</Link>
+                  <Link to={`/home/${userId}/gallery`} className="my-3" onClick={handleToggle} >Gallery</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/about" className="my-3">Letters</Link>
+                  <Link to={`/home/${userId}/letters`} className="my-3" onClick={handleToggle} >Letters</Link>
                   </li>
                   <li className="menu_item">
-                  <Link onClick={handleToggle} to="/contact" className="my-3"> Contact</Link>
+                  <Link to={`/home/${userId}/contact`} className="my-3" onClick={handleToggle} >Contact</Link>
                   </li>
                 </ul>
               </div>

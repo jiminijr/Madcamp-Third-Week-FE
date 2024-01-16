@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useLocation, useParams } from 'react-router-dom'; 
 import * as emailjs from "emailjs-com";
 import "./style.css";
+import Headermain from '../../header';
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { meta } from "../../content_option";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { contactConfig } from "../../content_option";
 
 export const ContactUs = () => {
+  const { userId } = useParams();
   const [formData, setFormdata] = useState({
     email: "",
     name: "",
@@ -66,6 +69,7 @@ export const ContactUs = () => {
 
   return (
     <HelmetProvider>
+      <Headermain userId={userId} />
       <Container>
         <Helmet>
           <meta charSet="utf-8" />

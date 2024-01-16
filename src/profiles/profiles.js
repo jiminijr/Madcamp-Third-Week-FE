@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import Card from './card';
+import Headermain from '../header';
 import Register from './register';
 import './profiles.css'; // 스타일시트 임포트
 import logoPath from '../../src/assets/images/gookhwa.png';
@@ -112,4 +113,3 @@ function Profiles() {
 }
 
 export default Profiles;
-

@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import Modal from "react-modal"; // react-modal 라이브러리 사용
+import Headermain from '../../header';
 import "./style.css";
+import { useLocation, useParams } from 'react-router-dom';
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Container, Row, Col } from "react-bootstrap";
-import { dataportfolio, meta } from "../../content_option";
+import { meta } from "../../content_option";
 
 export const Portfolio = () => {
-  const dataportfolio = [
-];
+    const location = useLocation();
+    const { userId } = useParams();
+    
 
+    const dataportfolio = [
+    ];
+    
+  
 
   const [portfolioData, setPortfolioData] = useState(dataportfolio);
   const [showPopup, setShowPopup] = useState(false); // 팝업 표시 상태
@@ -39,7 +46,9 @@ export const Portfolio = () => {
 
 
   return (
+    
     <HelmetProvider>
+       <Headermain userId={userId} />
       <Container className="About-header">
         <Helmet>
           <meta charSet="utf-8" />

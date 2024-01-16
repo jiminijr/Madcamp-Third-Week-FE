@@ -1,9 +1,12 @@
 
-  import React, { useState } from "react";
+  import React, { useState} from "react";
+  import { useLocation, useParams } from 'react-router-dom'; 
   import "./style.css";
+  import Headermain from '../../header';
   import { Container, Row, Col, Button, Modal, Form } from "react-bootstrap";
   
   export const About = () => {
+    const { userId } = useParams();
     const [showPopup, setShowPopup] = useState(false);
     const [letterContent, setLetterContent] = useState("");
     const [authorName, setAuthorName] = useState("");
@@ -25,6 +28,7 @@
   
     return (
       <Container className="About-header">
+        <Headermain userId={userId} />
         <Row>
           <Col>
   <Row className="mb-5 mt-3 pt-md-3 align-items-center">
