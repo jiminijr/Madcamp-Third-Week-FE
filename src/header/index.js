@@ -15,9 +15,9 @@ const Headermain = ({ userId }) => {
   const [isActive, setActive] = useState(true);
 
 
-  const pathMatchRegex = /^\/home\/\d+(\/(gallery|letters|Photobooth))?$/;
+  const pathMatchRegex = /^\/home\/\d+(\/(gallery|letters|photobooth))?$/;
 
-  const shouldShowHeader = ["/gallery", "/letters", "/Photobooth", "/home"].some(path => 
+  const shouldShowHeader = ["/gallery", "/letters", "/photobooth", "/home"].some(path => 
     location.pathname === path || pathMatchRegex.test(location.pathname)
   );
 
@@ -61,7 +61,7 @@ const Headermain = ({ userId }) => {
                   <Link to={`/home/${userId}/letters`} className="my-3" onClick={handleToggle} >Letters</Link>
                   </li>
                   <li className="menu_item">
-                  <Link to={`/home/${userId}/Photobooth`} className="my-3" onClick={handleToggle} >Photobooth</Link>
+                  <Link to={`/home/${userId}/photobooth`} className="my-3" onClick={handleToggle} >Photobooth</Link>
                   </li>
                 </ul>
               </div>

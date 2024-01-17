@@ -72,9 +72,9 @@ export const Home = () => {
                       <div className="ring three"></div>
                     </div>
                   </Link>
-                  <Link to={`/home/${userId}/contact`}>
+                  <Link to={`/home/${userId}/photobooth`}>
                     <div id="button_h" className="ac_btn btn">
-                      Contact Me
+                      photobooth
                       <div className="ring one"></div>
                       <div className="ring two"></div>
                       <div className="ring three"></div>
