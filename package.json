@@ -2,6 +2,7 @@
     "name": "react-portfolio",
     "version": "0.1.0",
     "private": true,
+    "proxy": "http://ec2-13-124-229-171.ap-northeast-2.compute.amazonaws.com",
     "dependencies": {
         "bootstrap": "^5.2.3",
         "emailjs-com": "^3.2.0",

@@ -8,7 +8,7 @@ section {
 }
 
 .who_am_I {
-    font-family: Cinzel;
+    font-family: "SCDream3";
 }
 
 .has-first-color {
@@ -47,12 +47,14 @@ section {
 .intro_sec .text,
 .intro_sec .h_bg-image {
     width: 50%;
+    font-family: "SCDream3";
 }
 
 @media (max-width:991.98px) {
     .intro_sec .text,
     .intro_sec .h_bg-image {
         width: 100%;
+        
     }
 }
 
@@ -69,6 +71,10 @@ section {
     }
 }
 
+.mb-1x{
+    font-family: "SCDream8";
+    font-size:50px;
+}
 .intro_sec .intro .feature .wrap-icon {
     background: 0 0!important;
     width: auto;
@@ -83,12 +89,13 @@ section {
 .intro_sec .text h1 {
     font-size: 30px;
     margin-bottom: 50px;
-    font-weight: 700;
+    font-family: "SCDream5";
 }
 
 .intro_sec .text h3 {
     font-size: 16px;
     font-weight: 700;
+    font-family: "SCDream5";
 }
 
 .intro_sec .h_bg-image {

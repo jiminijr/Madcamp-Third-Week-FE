@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "SCDream1";
+    font-style: normal;
+    src: url("./SCDream1.otf") format('opentype');
+  }
+  
+  @font-face {
+    font-family: "SCDream3";
+    font-style: normal;
+    src: url("./SCDream3.otf") format('opentype');
+  }
+  
+
+  @font-face {
+    font-family: "SCDream5";
+    font-style: normal;
+    src: url("./SCDream5.otf") format('opentype');
+  }
+  
+
+  @font-face {
+    font-family: "SCDream8";
+    font-style: normal;
+    src: url("./SCDream8.otf") format('opentype');
+  }
+  

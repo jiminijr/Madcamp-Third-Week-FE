@@ -36,7 +36,7 @@ function Register({ show, onClose, onRegister }) {
     handleSubmit(); // 폼 제출 처리
     generateLanterns(); // 랜턴 생성
   };
-
+  
   const handleSubmit = async () => {
     try {
       console.log('Submitting form:', newCard);

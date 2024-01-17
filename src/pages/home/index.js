@@ -27,10 +27,9 @@ export const Home = () => {
   }, [userData, navigate]);
 
     // userData가 없는 경우 렌더링을 방지하거나, 대체 UI를 표시
-    if (userData === undefined) {
-      return null; // 또는 대체 컴포넌트 렌더링
-    }
-    
+  if (userData === undefined) {
+    return null; // 또는 대체 컴포넌트 렌더링
+  }
   return (
     <HelmetProvider>
       <Headermain userId={userId} />
@@ -43,7 +42,7 @@ export const Home = () => {
         <div className="intro_sec d-block d-lg-flex align-items-center ">
           <div
             className="h_bg-image order-1 order-lg-2 h-100 "
-            style={{ backgroundImage: `url(${introdata.your_img_url})` }}
+            style={{ backgroundImage: `url(${userData.picture_url})` }}
           ></div>
           <div className="text order-2 order-lg-1 h-100 d-lg-flex justify-content-center">
             <div className="align-self-center ">
@@ -63,9 +62,9 @@ export const Home = () => {
                     }}
                   />
                 </h1>
-                <p className="mb-1x">{userData.introduction}</p>
+                <p className="mb-1x2">{userData.introduction}</p>
                 <div className="intro_btn-action pb-5">
-                  <Link to="/portfolio" className="text_2">
+                  <Link to={`/home/${userId}/gallery`} className="text_2">
                     <div id="button_p" className="ac_btn btn ">
                       Gallery
                       <div className="ring one"></div>
@@ -73,7 +72,7 @@ export const Home = () => {
                       <div className="ring three"></div>
                     </div>
                   </Link>
-                  <Link to="/contact">
+                  <Link to={`/home/${userId}/contact`}>
                     <div id="button_h" className="ac_btn btn">
                       Contact Me
                       <div className="ring one"></div>
