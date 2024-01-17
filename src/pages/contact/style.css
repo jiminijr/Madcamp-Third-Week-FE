@@ -7,6 +7,42 @@
     border: 1px solid var(--secondary-color);
 }
 
+.save_pic_button{
+    padding: 10px 20px;
+    width: 20%;
+    height: 30%;
+    background-color: #f1cb71;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 3%;
+    transition: background-color 0.3s ease;
+    font-family: 'SCDream5';
+}
+
+.save_pic_button:hover {
+    background-color: rgb(188, 106, 5); 
+  }
+
+.take_pic_button{
+    padding: 10px 20px;
+    width: 20%;
+    height: 30%;
+    background-color: #f1cb71;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 3%;
+    transition: background-color 0.3s ease;
+    font-family: 'SCDream5';
+  }
+  
+  .take_pic_button:hover {
+    background-color: rgb(188, 106, 5); 
+  }
+
 .contact__form input.form-control {
     margin-bottom: 2em;
     height: calc(2.5em + .75rem + 2px);
